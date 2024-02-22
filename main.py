@@ -22,5 +22,12 @@ for filepath in filepaths:
     pdf.set_font(family="Courier", style="B", size=16)
     pdf.cell(w=40, h=8, txt=topic, ln=1)
 
+    # Add the content to the PDF
+    filepath = f"text_files/{topic}.txt"
+    with open(filepath, "r") as file:
+        content = file.read()
+    pdf.set_font(family="Courier", style="I", size=14)
+    pdf.multi_cell(w=0, h=8, txt=content)
+
 # Produce the PDF
 pdf.output("output.pdf")
